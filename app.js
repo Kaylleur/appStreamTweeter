@@ -57,7 +57,7 @@ app.use(function(err, req, res, next) {
 /**
  * Listener on starwars hashtag
  */
-tweet.listen("starwars");
+//tweet.listen("starwars");
 
 
 module.exports = app;

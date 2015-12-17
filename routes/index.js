@@ -6,5 +6,8 @@ var router = express.Router();
 router.get('/', function(req, res) {
     indexController.index(req,res);
 });
+router.post('/', function(req, res){
+    indexController.index(req,res);
+});
 
 module.exports = router;

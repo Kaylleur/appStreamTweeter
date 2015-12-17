@@ -2,7 +2,7 @@ var Twitter = require('twitter');
 var db = require('./elastic');
 var fs = require('fs');
 
-var client = new Twitter(JSON.parse(fs.readFileSync('/config.json', 'utf8')));
+var client = new Twitter(JSON.parse(fs.readFileSync('./config.json', 'utf8')));
 
 
 module.exports = {

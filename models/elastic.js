@@ -20,5 +20,37 @@ module.exports = {
                 console.log(error);
             }
         });
+    },
+    getSearch : function(search){
+        client.get({
+            "index": 'tweet',
+            "type": 'starwars',
+            "sort" : [
+                { "created_at" : {"order" : "desc"}}
+            ],
+            "query":{
+                "bool": {
+                    "should": [
+                        {"match": {"text": search}},
+                        {"match": {"entities.hashtags.text": "starwars"}}
+                    ],
+                    "minimum_should_match": "50%"
+                }
+            }
+        }, function (error, response) {
+            if(error){
+                console.log(error);
+            }
+        });
+    },
+    lastestTweets : function(nb, callback){
+        client.get({
+            "index": 'tweet',
+            "type": 'starwars',
+            "size": 5,
+            "sort" : [
+                { "created_at" : {"order" : "desc"}}
+            ]
+        }, callback(  null, data  ));
     }
-}
+};
