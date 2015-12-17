@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
     indexController.index(req,res);
 });
 router.post('/', function(req, res){
-    indexController.index(req,res);
+    indexController.search(req,res);
 });
 
 module.exports = router;

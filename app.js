@@ -3,7 +3,6 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var tweet = require('./models/tweet');
 var routes = require('./routes/index');
 
 var app = express();
@@ -53,11 +52,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-/**
- * Listener on starwars hashtag
- */
-//tweet.listen("starwars");
 
 
 module.exports = app;

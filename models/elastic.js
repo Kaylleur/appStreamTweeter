@@ -21,36 +21,36 @@ module.exports = {
             }
         });
     },
-    getSearch : function(search){
-        client.get({
+    getSearch : function(search,callback){
+        client.search({
             "index": 'tweet',
             "type": 'starwars',
-            "sort" : [
-                { "created_at" : {"order" : "desc"}}
-            ],
-            "query":{
-                "bool": {
-                    "should": [
-                        {"match": {"text": search}},
-                        {"match": {"entities.hashtags.text": "starwars"}}
-                    ],
-                    "minimum_should_match": "50%"
+            "body": {
+                "sort": [
+                    {"created_at": {"order": "asc"}}
+                ],
+                "query": {
+                    "bool": {
+                        "should": [
+                            {"match": {"text": search}},
+                            {"match": {"hashtags": "starwars"}}
+                        ],
+                        "minimum_should_match": "50%"
+                    }
                 }
             }
-        }, function (error, response) {
-            if(error){
-                console.log(error);
-            }
-        });
+        },callback);
     },
-    lastestTweets : function(nb, callback){
-        client.get({
+    latestTweets : function(nb, callback){
+        client.search({
             "index": 'tweet',
             "type": 'starwars',
-            "size": 5,
-            "sort" : [
-                { "created_at" : {"order" : "desc"}}
-            ]
-        }, callback(  null, data  ));
+            "body":{
+                "size": 5,
+                "sort" : [
+                    { "created_at" : {"order" : "asc"}}
+                ]
+            }
+        },callback);
     }
 };

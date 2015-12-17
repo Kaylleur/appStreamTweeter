@@ -3,5 +3,11 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
   body
+    div.container
+      div.row
+        a(href="/")
+          button.btn.btn-success.
+            Home
     block content

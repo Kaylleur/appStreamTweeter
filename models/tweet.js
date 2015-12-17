@@ -13,7 +13,15 @@ module.exports = {
                 if(err){
                     console.log(err);
                 }
-                db.create(params.track,tweet);
+                var tweetDb = {
+                    "text":tweet.text,
+                    "hashtags":[tweet.entities.hashtags],
+                    "created_at":new Date(  ),
+                    "userName":tweet.user.screen_name,
+                    "userImg":tweet.user.profile_image_url
+                }
+                console.log(tweetDb);
+                db.create(params.track,tweetDb);
             });
         });
     }
